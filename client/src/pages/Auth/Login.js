@@ -19,7 +19,9 @@ const Login = () => {
         e.preventDefault();
         try {
             //出錯 ${process.env.REACT_APP_API}/api/vi/auth/register`， package.json 設定\ proxy: http://localhost:8080/
+
             const res = await axios.post(`/api/v1/auth/login`, { email, password });
+
             if (res && res.data.success) {
                 toast.success(res.data && res.data.message);
                 setAuth({

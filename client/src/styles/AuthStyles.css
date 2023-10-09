@@ -24,10 +24,10 @@
     font-family: "Playfair Display", serif;
 }
 
-.for-container form input {
+.form-container form input {
     border: none;
     border-bottom: 1px solid #000;
-    border-radius: 0
+    border-radius: 0;
 }
 
 .form-container form button {
