@@ -15,6 +15,8 @@ const App = () => {
     <div>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        {/* Dashboard: Private(PrivateRoute) => authRoute =>  authMiddleware(requireSignIn) => 
+        ok: <Outlet/>: <Dashboard />, false: <Spinner /> => login */}
         <Route path='/dashboard' element={<PrivateRoute />}>
           <Route path='' element={<Dashboard />} />
         </Route>
