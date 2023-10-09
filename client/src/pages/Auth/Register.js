@@ -12,15 +12,16 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [answer, setAnswer] = useState("");
     const navigate = useNavigate();
 
     //form function{
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(name, email, password, address, phone);
+        /*  console.log(name, email, password, address, phone); */
         try {
             //出錯 ${process.env.REACT_APP_API}/api/vi/auth/register`， package.json 設定\ proxy: http://localhost:8080/
-            const res = await axios.post(`/api/v1/auth/register`, { name, email, password, phone, address });
+            const res = await axios.post(`/api/v1/auth/register`, { name, email, password, phone, address, answer });
             if (res && res.data.success) {
                 toast.success('res.data.message');
                 navigate("/login");
@@ -54,7 +55,10 @@ const Register = () => {
                     <div className="mb-3">
                         <input type="text" className="form-control" id="inputAddress" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Enter Your Address" required />
                     </div>
-                    <button type="submit" className="btn submit">Submit</button>
+                    <div className="mb-3">
+                        <input type="text" className="form-control" id="inputAnswer" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder="What is Your Favorite Sports?" required />
+                    </div>
+                    <button type="submit" className="btn submit w-100">Submit</button>
                 </form>
 
             </div>
