@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, createContext } from 'react'
-
+import axios from 'axios'
 
 //AuthContext 是一個特殊的筆記本，其中包含了使用者的身分和令牌等身分驗證資訊。
 const AuthContext = createContext()
@@ -11,15 +11,12 @@ const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState(
         {
             user: null,
-            toekn: ''
+            toekn: ""
         }
-    )
+    );
 
-    /* [auth] 可能會無限循環，因為每次 useEffect 更新 auth 時都會再次觸發它，設置為 []，它只會在組件渲染後執行一次。
-    useEffect(() => {
-        XXX
-    }, [auth]) */
-
+    //default axios
+    axios.defaults.headers.common['Authorization'] = auth?.token
 
     useEffect(() => {
         const data = localStorage.getItem('auth')

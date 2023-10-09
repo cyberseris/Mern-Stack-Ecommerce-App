@@ -5,7 +5,7 @@ import { useAuth } from "../context/auth";
 const HomePage = () => {
     const [auth, setAuth] = useAuth()
     return (
-        <Layout title={'Mern Stack E-Commerce'}>
+        <Layout title={'HomePage - E-Commerce'}>
             <h2>HomePage</h2>
             <pre>{JSON.stringify(auth, null, 4)}</pre>
         </Layout>
