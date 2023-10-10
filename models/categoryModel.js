@@ -10,4 +10,4 @@ const categorySchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model('users', userSchema);
+export default mongoose.model('Category', categorySchema);
