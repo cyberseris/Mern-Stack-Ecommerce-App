@@ -33,6 +33,6 @@ export default function AdminRoute() {
         checkAuth();
     })
 
-
-    return ok ? <Outlet /> : <Spinner path="" />;
+    //<Spinner path="" />;
+    return ok ? <Outlet /> : <Spinner />;
 }

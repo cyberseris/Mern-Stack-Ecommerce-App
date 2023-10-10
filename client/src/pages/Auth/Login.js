@@ -24,7 +24,7 @@ const Login = () => {
             if (res && res.data.success) {
                 toast.success(res.data && res.data.message);
                 setAuth({
-                    ...auth,
+                    /*                     ...auth, */
                     user: res.data.user,
                     token: res.data.token,
                 });
