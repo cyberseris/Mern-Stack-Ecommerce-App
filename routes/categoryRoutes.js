@@ -11,7 +11,7 @@ import {
 //router object
 const router = express.Router();
 //routing
-//1.authRoute.js => 2. authController.js => 3. userModel.js => 4. authHelper.js
+//1.server.js => 2. categoryRoutes 3. categoryController.js => 4. authMiddleware.js 
 //create category
 router.post("/create-category", requireSignIn, isAdmin, createCategoryController);
 
@@ -21,8 +21,8 @@ router.put("/update-category/:id", requireSignIn, isAdmin, updateCategoryControl
 //getAll category
 router.get("/get-category", categoryController);
 
-//single category
-router.get("/single-category:slug", singleCategoryController);
+//single category /single-category:slug
+router.get("/single-category/:slug", singleCategoryController);
 
 //delete category
 router.delete("/delete-category/:id", requireSignIn, isAdmin, deleteCategoryController);
