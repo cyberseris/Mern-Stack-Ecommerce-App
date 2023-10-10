@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/auth";
 import { Outlet } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import Spinner from "../Spinner";
 
 export default function AdminRoute() {
@@ -9,18 +9,30 @@ export default function AdminRoute() {
     const [auth, setAuth] = useAuth();
 
     useEffect(() => {
-        const authCheck = async () => {
-            const res = await axios.get('/api/v1/auth/admin-auth')
-            if (res.data.ok) {
-                setOk(true)
-            } else {
-                setOk(false)
+        async function authCheck() {
+            try {
+                const res = await axios.get("/api/v1/auth/admin-auth");
+                if (res.data.ok) {
+                    setOk(true);
+                } else {
+                    setOk(false);
+                }
+            } catch {
+                // 處理錯誤，例如記錄錯誤或採取其他必要的操作
+                /* console.error("An error occurred:", error); */
+                setOk(false);
             }
         }
 
-        if (auth?.token) authCheck()
+        const checkAuth = async () => {
+            if (auth?.token) {
+                await authCheck(); //等待 authCheck 完成
+            }
+        };
 
-    }, [auth?.token])
+        checkAuth();
+    })
 
-    return ok ? <Outlet /> : <Spinner />
+
+    return ok ? <Outlet /> : <Spinner path="" />;
 }
