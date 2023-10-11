@@ -37,7 +37,7 @@ export const createProductController = async (req, res) => {
             case !quantity:
                 return res.status(500).send({ error: "Quantity is Required" });
             case photo && photo.size > 1000000:
-                return res.status(500).send({ error: "photo is Required and should be less then 1mb" })
+                return res.status(500).send({ error: "Photo is required and should be less then 1mb" })
         }
 
         const products = new productModel({ ...req.fields, slug: slugify(name) });
@@ -132,7 +132,7 @@ export const productPhotoController = async (req, res) => {
 //delete product
 export const deleteProductController = async (req, res) => {
     try {
-        const product = await productModel
+        await productModel
             .findByIdAndDelete(req.params.pid).select("-photo");
         res.status(200).send({
             success: true,
@@ -166,7 +166,7 @@ export const updateProductController = async (req, res) => {
             case !quantity:
                 return res.status(500).send({ error: "Quantity is Required" });
             case photo && photo.size > 1000000:
-                return res.status(500).send({ error: "photo is Required and should be less then 1mb" })
+                return res.status(500).send({ error: "Photo is required and should be less then 1mb" })
         }
 
         const products = await productModel.findByIdAndUpdate(
@@ -174,11 +174,18 @@ export const updateProductController = async (req, res) => {
             { ...req.fields, slug: slugify(name) },
             { new: true }
         );
-        if (photo) {
-            products.photo.data = fs.readFileSync(photo.path);
-            products.photo.contentType = photo.type;
+
+        try {
+            if (photo && products) {
+                products.photo.data = fs.readFileSync(photo.path);
+                products.photo.contentType = photo.type;
+            }
+        } catch (error) {
+            console.log(error)
         }
 
+
+        console.log("test5");
         await products.save();
         res.status(201).send({
             success: true,
