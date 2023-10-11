@@ -29,12 +29,11 @@ router.post("/create-product", requireSignIn, isAdmin, formidable(), createProdu
 //get products
 router.get("/get-product", getProductController);
 
-//update product
-router.put("/update-product/:id", requireSignIn, isAdmin, formidable(), updateProductController);
-
-
 //single product
 router.get("/single-product/:slug", getSingleProductController);
+
+//update product
+router.put("/update-product/:id", requireSignIn, isAdmin, formidable(), updateProductController);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);

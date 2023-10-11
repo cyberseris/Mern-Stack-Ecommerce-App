@@ -68,9 +68,9 @@ export const getProductController = async (req, res) => {
         const products = await productModel
             .find({})
             .populate("category")
-            .select("-photo")
+            .select("-photo")   //排除了 photo 字段
             .limit(12)
-            .sort({ createdAt: -1 });
+            .sort({ createdAt: -1 }); //降序排序，即最新創建的產品首先返回。
 
         res.status(200).send({
             success: true,
@@ -97,7 +97,7 @@ export const getSingleProductController = async (req, res) => {
             .populate("category");
         res.status(200).send({
             success: true,
-            message: "Single Product",
+            message: "Single Product Fetched",
             product,
         });
     } catch (error) {
