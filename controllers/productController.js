@@ -184,8 +184,6 @@ export const updateProductController = async (req, res) => {
             console.log(error)
         }
 
-
-        console.log("test5");
         await products.save();
         res.status(201).send({
             success: true,
