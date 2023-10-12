@@ -9,9 +9,9 @@ import {
     getProductController,
     getSingleProductController,
     /* productCategoryController, */
-    productCountController,
+    /*     productCountController, */
     productFiltersController,
-    productListController,
+    /* productListController, */
     productPhotoController,
     /* relatedProductController,
     searchProductController, */
@@ -26,11 +26,12 @@ const router = express.Router();
 //create product
 router.post("/create-product", requireSignIn, isAdmin, formidable(), createProductController);
 
+
 //get products
 router.get("/get-product", getProductController);
 
 //single product
-router.get("/single-product/:slug", getSingleProductController);
+router.get("/get-product/:slug", getSingleProductController);
 
 //get photo
 router.get("/product-photo/:pid", productPhotoController);
@@ -45,10 +46,10 @@ router.put("/update-product/:pid", requireSignIn, isAdmin, formidable(), updateP
 router.post("/product-filters", productFiltersController);
 
 //product count
-router.post("/product-count", productCountController);
+/* router.post("/product-count", productCountController); */
 
 //product per page
-router.post("/product-list/:page", productListController);
+/* router.post("/product-list/:page", productListController); */
 
 //search product
 /* router.post("/search/:keyword", searchProductController); */

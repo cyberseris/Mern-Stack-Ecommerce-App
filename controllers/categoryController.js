@@ -1,7 +1,7 @@
 import categoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
 
-//server.js => categoryController.js
+//1.server.js => 2. categoryRoutes 3. categoryController.js(API) => 4. authMiddleware.js(requireSignIn,isAdmin,) => App.js (前端)
 //create category
 export const createCategoryController = async (req, res) => {
     try {
