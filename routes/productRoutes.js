@@ -9,9 +9,9 @@ import {
     getProductController,
     getSingleProductController,
     /* productCategoryController, */
-    /*     productCountController, */
+    productCountController,
     productFiltersController,
-    /* productListController, */
+    productListController,
     productPhotoController,
     /* relatedProductController,
     searchProductController, */
@@ -46,10 +46,10 @@ router.put("/update-product/:pid", requireSignIn, isAdmin, formidable(), updateP
 router.post("/product-filters", productFiltersController);
 
 //product count
-/* router.post("/product-count", productCountController); */
+router.get("/product-count", productCountController);
 
 //product per page
-/* router.post("/product-list/:page", productListController); */
+router.get("/product-list/:page", productListController);
 
 //search product
 /* router.post("/search/:keyword", searchProductController); */

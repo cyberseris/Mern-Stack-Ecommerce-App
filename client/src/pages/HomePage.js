@@ -19,7 +19,7 @@ const HomePage = () => {
     const [loading, setLoading] = useState(false);
 
     //get all products
-    /* const getAllProducts = async () => {
+    const getAllProducts = async () => {
         try {
             setLoading(true);
             const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
@@ -27,38 +27,35 @@ const HomePage = () => {
             setProducts(data.products);
         } catch (error) {
             setLoading(false);
-            toast.error("Something went wrong");
-        }
-    } */
-
-    const getAllProducts = async () => {
-        try {
-            /* setLoading(true); */
-            const { data } = await axios.get(`/api/v1/product/get-product`);
-            /*  setLoading(false); */
-            setProducts(data.products);
-        } catch (error) {
-            /* setLoading(false); */
             toast.error("Something went wrong in getting products");
         }
     }
 
-    useEffect(() => {
-        getAllProducts();
-    }, []);
+    /*     const getAllProducts = async () => {
+            try {
+                setLoading(true);
+                const { data } = await axios.get(`/api/v1/product/get-product`);
+                setLoading(false);
+                setProducts(data.products);
+            } catch (error) {
+                setLoading(false);
+                toast.error("Something went wrong in getting products");
+            }
+        } */
 
+    const getTotal = async () => {
+        try {
+            const { data } = await axios.get(`/api/v1/product/product-count`);
+            setTotal(data?.total);
+        } catch (error) {
+            /* console.log(error); */
+            toast.error("Something went wrong in getting total")
+        }
+    };
 
-    /*  const getTotal = async () => {
-         try {
-             const { data } = await axios.get("/api/v1/product/product-count");
-             setTotal(data?.total);
-         } catch (error) {
-             toast.error("Something went wrong in getting total")
-         }
-     }; */
 
     //load more
-    /* const loadMore = async () => {
+    const loadMore = async () => {
         try {
             setLoading(true);
             const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
@@ -67,20 +64,18 @@ const HomePage = () => {
         } catch (error) {
             setLoading(false);
         }
-    } */
+    }
 
-    /* useEffect(() => {
+    useEffect(() => {
         if (page === 1) return;
         loadMore();
-    }, [[page]]) */
+    }, [page])
 
 
     //get all categories
     const getAllCategory = async () => {
         try {
-            console.log("getAllCategory1")
             const { data } = await axios.get("/api/v1/category/get-category");
-            console.log("getAllCategory2")
             if (data?.success) {
                 setCategories(data?.category);
             }
@@ -92,7 +87,7 @@ const HomePage = () => {
 
     useEffect(() => {
         getAllCategory();
-        /* getTotal(); */
+        getTotal();
     }, []);
 
 
@@ -191,7 +186,7 @@ const HomePage = () => {
                         }
                     </div>
                     <div className="m-2 p-3">
-                        {/*  {products && products.length < total && (
+                        {products && products.length < total && (
                             <button
                                 className="btn loadmore"
                                 onClick={(e) => {
@@ -208,7 +203,7 @@ const HomePage = () => {
                                     </>
                                 )}
                             </button>
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>

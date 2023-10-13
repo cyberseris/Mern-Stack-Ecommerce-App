@@ -219,9 +219,8 @@ export const productFiltersController = async (req, res) => {
     }
 };
 //product count
-/* export const productCountController = async (req, res) => {
+export const productCountController = async (req, res) => {
     try {
-        小規模 countDocuments, 大規模 estimatedDocumentCount
         const total = await productModel.find({}).estimatedDocumentCount();
         res.status(200).send({
             success: true,
@@ -229,15 +228,14 @@ export const productFiltersController = async (req, res) => {
         });
     } catch (error) {
         res.status(400).send({
-            success: false,
-            message: "Error While Filtering Products",
+            message: "Error in product count",
             error,
+            success: false,
         });
     }
-}; */
-
+};
 //product count
-/* export const productListController = async (req, res) => {
+export const productListController = async (req, res) => {
     try {
         //
         const perPage = 6;
@@ -259,7 +257,7 @@ export const productFiltersController = async (req, res) => {
             error,
         });
     }
-}; */
+};
 
 //待...
 

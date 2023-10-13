@@ -47,7 +47,7 @@ const Products = () => {
                                                 </img>
                                                 <div className="card-body">
                                                     <h5 className="card-title text-center">{pd.name}</h5>
-                                                    <p className="card-text text-center">{pd.description}</p>
+                                                    <p className="card-text text-center">{pd.description.substring(0, 20)}</p>
                                                 </div>
                                             </div>
                                         </Link>
