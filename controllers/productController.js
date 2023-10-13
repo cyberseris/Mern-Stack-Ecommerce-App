@@ -259,5 +259,29 @@ export const productListController = async (req, res) => {
     }
 };
 
+//search product
+export const searchProductController = async (req, res) => {
+    try {
+        const { keyword } = req.params;
+        const results = await productModel
+            .find({
+                $or: [
+                    { name: { $regex: keyword, $options: "i" } },  //指定多的條件之一被滿足，並忽略大小寫
+                    { description: { $regex: keyword, $options: "i" } }
+                ],
+            })
+            .select("-photo");
+        res.json(results);
+    } catch (error) {
+        /* console.log(error) */
+        res.status(400).send({
+            success: false,
+            message: "Error In Search Product API",
+            error
+        });
+    }
+}
+
+
 //待...
 

@@ -6,11 +6,10 @@ const AuthContext = createContext()
 
 //AuthProvider 是一個魔法頁面，它負責管理和提供身分驗證資訊。當使用者登入或登出時，它會在筆記本中記錄或清除相關資訊。
 const AuthProvider = ({ children }) => {
-
     const [auth, setAuth] = useState(
         {
             user: null,
-            toekn: ""
+            token: ""
         }
     );
 
