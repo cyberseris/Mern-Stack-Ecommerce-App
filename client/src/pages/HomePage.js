@@ -7,6 +7,7 @@ import { Checkbox, Radio } from 'antd';
 import { Prices } from "../components/Prices";
 import { AiOutlineReload } from "react-icons/ai";
 
+
 const HomePage = () => {
     const navigate = useNavigate();
     /* const [cart, setCart] = useCart(); */
@@ -177,7 +178,8 @@ const HomePage = () => {
                                         <p className="card-text text-center">{pd.description.substring(0, 30)}</p>
                                         <p className="card-text text-center">$ {pd.price}</p>
                                         <div className="d-flex w-100">
-                                            <button className="btn btn-primary me-3">More Details</button>
+                                            <button className="btn btn-primary me-3"
+                                                onClick={() => navigate(`/product/${pd.slug}`)}>More Details</button>
                                             <button className="btn btn-secondary">Add TO CART</button>
                                         </div>
                                     </div>

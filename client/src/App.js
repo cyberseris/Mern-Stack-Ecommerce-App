@@ -20,12 +20,14 @@ import Users from './pages/Admin/Users';
 import Profile from './pages/user/Profile';
 import Orders from './pages/user/Orders';
 import Search from "./pages/Search";
+import ProductDetails from './pages/ProductDetails';
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/product/:slug' element={<ProductDetails />} />
         <Route path="/search" element={<Search />} />
         {/* Dashboard: Private(PrivateRoute) => authRoute =>  authMiddleware(requireSignIn) => 
         ok: <Outlet/>: <Dashboard />, false: <Spinner /> => login */}

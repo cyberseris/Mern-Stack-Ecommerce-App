@@ -282,6 +282,30 @@ export const searchProductController = async (req, res) => {
     }
 }
 
+//similar products
+export const relatedProductController = async (req, res) => {
+    try {
+        const { pid, cid } = req.params;
+        const products = await productModel
+            .find({
+                category: cid,
+                _id: { $ne: pid }, //not equal => related
+            })
+            .select("-photo")
+            .limit(3)
+            .populate("category")
+        res.status(200).send({
+            success: true,
+            products,
+        });
+    } catch (error) {
+        res.status(400).send({
+            success: false,
+            message: "Error while getting related product",
+            error,
+        })
+    }
+}
 
 //待...
 
