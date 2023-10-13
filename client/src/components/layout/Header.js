@@ -3,9 +3,12 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from "../../context/auth";
 import toast from 'react-hot-toast';
 import SearchInput from '../Form/SearchInput';
+import useCategory from '../../hooks/useCategory';
 
 const Header = () => {
     const [auth, setAuth] = useAuth();
+    const categories = useCategory()
+
     const handleLogout = () => {
         setAuth({
             ...auth,
@@ -33,8 +36,26 @@ const Header = () => {
                             <li className="nav-item">
                                 <NavLink to="/" className="nav-link">Home</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to="/category" className="nav-link">Category</NavLink>
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to={"/categories"} data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categories
+                                </Link>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <Link className="dropdown-item" to={"/categories"}>
+                                            All Categories
+                                        </Link>
+                                    </li>
+                                    {categories.map((category) => (
+                                        <li>
+                                            <Link
+                                                className="dropdown-item"
+                                                to={`/category/${category.slug}`}>
+                                                {category.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
                             </li>
                             {!auth.user ? (<>
                                 <li className="nav-item">

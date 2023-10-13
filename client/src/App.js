@@ -21,6 +21,8 @@ import Profile from './pages/user/Profile';
 import Orders from './pages/user/Orders';
 import Search from "./pages/Search";
 import ProductDetails from './pages/ProductDetails';
+import Categories from './pages/Categories';
+import CategoryProduct from './pages/CategoryProduct';
 
 const App = () => {
   return (
@@ -28,6 +30,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/product/:slug' element={<ProductDetails />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/search" element={<Search />} />
         {/* Dashboard: Private(PrivateRoute) => authRoute =>  authMiddleware(requireSignIn) => 
         ok: <Outlet/>: <Dashboard />, false: <Spinner /> => login */}

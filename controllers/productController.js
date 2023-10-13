@@ -1,12 +1,11 @@
 import productModel from "../models/productModel.js";
-/* import categoryModel from "../models/categoryModel.js";
-import orderModel from "../models/orderModel.js"; */
+import categoryModel from "../models/categoryModel.js";
+/*import orderModel from "../models/orderModel.js"; */
 
 import fs from "fs";
 import slugify from "slugify";
 import braintree from "braintree";
 import dotenv from "dotenv";
-import categoryModel from "../models/categoryModel.js";
 /* import { toast } from 'react-toastify'; */
 import toast from "react-hot-toast";
 
@@ -303,6 +302,25 @@ export const relatedProductController = async (req, res) => {
             success: false,
             message: "Error while getting related product",
             error,
+        })
+    }
+}
+
+export const productCategoryController = async (req, res) => {
+    try {
+        const category = await categoryModel.findOne({ slug: req.params.slug });
+        const products = await productModel.find({ category }).populate("category");
+
+        res.status(200).send({
+            success: true,
+            category,
+            products
+        });
+    } catch (error) {
+        res.status(400).send({
+            success: false,
+            error,
+            message: "Error while getting products",
         })
     }
 }
