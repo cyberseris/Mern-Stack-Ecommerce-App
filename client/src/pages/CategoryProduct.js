@@ -10,7 +10,6 @@ const CategoryProduct = () => {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState([]);
 
-
     useEffect(() => {
         if (params?.slug) getProductByCat();
     }, [params?.slug]);
@@ -47,9 +46,10 @@ const CategoryProduct = () => {
                                             <h5 className="card-title text-center">{pd.price}</h5>
                                             <p className="card-text text-center">{pd.description.substring(0, 20)}</p>
                                             <div className="card-name-price">
-                                                <button className="btn btn-info ms-1" onClick={() => navigate(`/product/${pd.slug}`)}>
+                                                <button className="btn btn-primary ms-1 me-3" onClick={() => navigate(`/product/${pd.slug}`)}>
                                                     More Details
                                                 </button>
+                                                <button className="btn btn-secondary">Add TO CART</button>
                                             </div>
                                         </div>
                                     </div>

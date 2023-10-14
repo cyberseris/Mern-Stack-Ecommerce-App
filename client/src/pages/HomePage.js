@@ -6,11 +6,11 @@ import Layout from "./../components/layout/Layout";
 import { Checkbox, Radio } from 'antd';
 import { Prices } from "../components/Prices";
 import { AiOutlineReload } from "react-icons/ai";
-
+import { useCart } from "../context/cart";
 
 const HomePage = () => {
     const navigate = useNavigate();
-    /* const [cart, setCart] = useCart(); */
+    const [cart, setCart] = useCart();
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [checked, setChecked] = useState([]);
@@ -178,9 +178,17 @@ const HomePage = () => {
                                         <p className="card-text text-center">{pd.description.substring(0, 30)}</p>
                                         <p className="card-text text-center">$ {pd.price}</p>
                                         <div className="d-flex w-100">
-                                            <button className="btn btn-primary me-3"
+                                            <button className="btn btn-primary ms-1 me-3"
                                                 onClick={() => navigate(`/product/${pd.slug}`)}>More Details</button>
-                                            <button className="btn btn-secondary">Add TO CART</button>
+                                            <button className="btn btn-secondary" onClick={() => {
+                                                setCart([...cart, pd]);
+                                                localStorage.setItem(
+                                                    "cart",
+                                                    JSON.stringify([...cart, pd])
+                                                );
+                                                toast.success("Item Added to cart");
+                                            }}
+                                            >Add TO CART</button>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +217,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </Layout >
     );
 };
 

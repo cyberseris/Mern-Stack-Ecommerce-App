@@ -1,9 +1,21 @@
-import React from 'react'
+import { useState, useContext, createContext, useEffect } from "react";
 
-const cart = () => {
+const CartContext = createContext();
+const CartProvider = ({ children }) => {
+    const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        let existingCartItem = localStorage.getItem("cart");
+        if (existingCartItem) setCart(JSON.parse(existingCartItem));
+    }, []);
+
     return (
-        <div>cart</div>
+        <CartContext.Provider value={[cart, setCart]}>
+            {children}
+        </CartContext.Provider>
     )
 }
 
-export default cart
+const useCart = () => useContext(CartContext);
+
+export { useCart, CartProvider }
