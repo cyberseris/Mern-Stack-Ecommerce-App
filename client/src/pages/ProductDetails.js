@@ -3,13 +3,14 @@ import Layout from "./../components/layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
+import { useCart } from "../context/cart";
 
 const ProductDetails = () => {
     const params = useParams();
     const navigate = useNavigate();
     const [product, setProduct] = useState({});
     const [relatedProducts, setRelatedProducts] = useState([]);
+    const [cart, setCart] = useCart();
 
     useEffect(() => {
         if (params?.slug) getProduct();
@@ -59,7 +60,15 @@ const ProductDetails = () => {
                         currency: "USD"
                     })}</h6> */}
                     <h6>Category : {product?.category?.name}</h6>
-                    <button>ADD TO CART</button>
+                    <button className="btn btn-secondary" onClick={() => {
+                        setCart([...cart, product]);
+                        localStorage.setItem(
+                            "cart",
+                            JSON.stringify([...cart, product])
+                        );
+                        toast.success("Item Added to cart");
+                    }}
+                    >Add TO CART</button>
                 </div>
             </div>
             <hr />
@@ -81,7 +90,7 @@ const ProductDetails = () => {
                                 />
 
                                 <div className="card-body">
-                                    <div className="card-name-price">
+                                    <div className="card-name-price text-center">
                                         <h5 className="card-title">{pd.name}</h5>
                                         <h5 className="card-title card-price">
                                             {pd.price.toLocaleString("en-US", {
@@ -89,13 +98,13 @@ const ProductDetails = () => {
                                                 currency: "USD",
                                             })}
                                         </h5>
+                                        <p className="card-text">
+                                            {pd.description.substring(0, 20)}...
+                                        </p>
                                     </div>
-                                    <p className="card-text">
-                                        {pd.description.substring(0, 20)}...
-                                    </p>
-                                    <div className="card-name-price">
+                                    <div className="d-flex justify-content-center">
                                         <button
-                                            className="btn btn-info ms-1"
+                                            className="btn btn-primary"
                                             onClick={() => navigate(`/product/${pd.slug}`)}
                                         >
                                             More Details
