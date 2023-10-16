@@ -7,6 +7,7 @@ import { Checkbox, Radio } from 'antd';
 import { Prices } from "../components/Prices";
 import { AiOutlineReload } from "react-icons/ai";
 import { useCart } from "../context/cart";
+import "../styles/Homepage.css";
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -126,14 +127,14 @@ const HomePage = () => {
 
 
     return (
-        <Layout title={"Homepage - Ecommerce App "}>
-            <div className="row mt-4">
+        <Layout title={"Homepage - Ecommerce App"}>
+            <div className="row mt-4 home-page">
                 <div className="col-md-2">
                     <h4 className="text-center">Filter By Category</h4>
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column ">
                         {
                             categories?.map((category) => (
-                                <Checkbox key={category._id} onChange={(e) => handleFilter(e.target.checked, category._id)}>
+                                <Checkbox className="m-0 ps-3" key={category._id} onChange={(e) => handleFilter(e.target.checked, category._id)}>
                                     {category.name}
                                 </Checkbox>
                             ))
@@ -163,10 +164,10 @@ const HomePage = () => {
                 <div className="col-md-9">
                     {/* {JSON.stringify(checked, null, 4)} */}
                     <h2 className="text-center">All Products</h2>
-                    <div className="d-flex flex-wrap row">
+                    <div className="d-flex  row">
                         {
                             products?.map((pd) => (
-                                <div className="card m-2 col-md-3" key={pd._id}>
+                                <div className="card m-2 col-3 col-md-3 p-0 m-0" key={pd._id}>
                                     <img
                                         src={`/api/v1/product/product-photo/${pd._id}`}
                                         className="card-img-top"
@@ -176,7 +177,7 @@ const HomePage = () => {
                                     <div className="card-body">
                                         <h5 className="card-title text-center">{pd.name}</h5>
                                         <p className="card-text text-center">{pd.description.substring(0, 30)}</p>
-                                        <p className="card-text text-center">$ {pd.price}</p>
+                                        <p className="card-text text-center card-price">$ {pd.price}</p>
                                         <div className="d-flex w-100">
                                             <button className="btn btn-primary ms-1 me-3"
                                                 onClick={() => navigate(`/product/${pd.slug}`)}>More Details</button>
@@ -198,7 +199,7 @@ const HomePage = () => {
                     <div className="m-2 p-3">
                         {products && products.length < total && (
                             <button
-                                className="btn btn-success loadmore"
+                                className="btn btn-success text-white loadmore"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setPage(page + 1);

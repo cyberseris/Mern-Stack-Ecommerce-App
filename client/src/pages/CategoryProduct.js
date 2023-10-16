@@ -44,8 +44,10 @@ const CategoryProduct = () => {
                                         >
                                         </img>
                                         <div className="card-body">
-                                            <h5 className="card-title text-center">{pd.name}</h5>
-                                            <h5 className="card-title text-center">{pd.price}</h5>
+                                            <div className="card-name-price">
+                                                <h5 className="card-title text-center">{pd.name}</h5>
+                                                <h5 className="card-title text-center">{pd.price}</h5>
+                                            </div>
                                             <p className="card-text text-center">{pd.description.substring(0, 20)}</p>
                                             <div className="card-name-price">
                                                 <button className="btn btn-primary ms-1 me-3" onClick={() => navigate(`/product/${pd.slug}`)}>

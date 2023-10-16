@@ -63,6 +63,7 @@ export const updateCategoryController = async (req, res) => {
     }
 }
 
+
 //get all categories
 export const categoryController = async (req, res) => {
     try {

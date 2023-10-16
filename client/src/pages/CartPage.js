@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 /* import { AiFillWarning } from "react-icons/ai"; */
 import axios from "axios";
 import toast from "react-hot-toast";
-import DropIn from "braintree-web-drop-in-react";
+/* import DropIn from "braintree-web-drop-in-react"; */
+import "../styles/CartStyles.css";
+
 
 const CartPage = () => {
     const [auth, setAuth] = useAuth();
@@ -68,11 +70,13 @@ const CartPage = () => {
     const handlePayment = async () => {
         try {
             setLoading(true);
-            const { nonce } = await instance.requestPaymentMethod();
-            console.log(`nonce: ${nonce}`)
-            console.log(`cart: ${cart}`)
-            const { data } = await axios.post("/api/v1/product/braintree/payment", {
+            /* const { nonce } = await instance.requestPaymentMethod(); */
+            /* const { data } = await axios.post("/api/v1/product/braintree/payment", {
                 nonce, cart
+            });
+ */
+            const { data } = await axios.post("/api/v1/product/braintree/payment", {
+                cart
             });
 
             setLoading(false);
@@ -88,7 +92,7 @@ const CartPage = () => {
 
     return (
         <Layout>
-            <div className='container'>
+            <div className='cart-page container'>
                 <div className='row'>
                     <div className='col-md-12'>
                         <h2 className='text-center bg-light p-2'>
@@ -119,7 +123,7 @@ const CartPage = () => {
                                     <p>{pd.description.substring(0, 20)}</p>
                                     <p>Price : {pd.price}</p>
                                 </div>
-                                <div className="col-md-4 d-flex justify-content-center align-items-center">
+                                <div className="col-md-4 d-flex justify-content-center align-items-center cart-remove-btn">
                                     <button className="btn btn-danger" onClick={() => {
                                         removeCartItem(pd._id)
                                     }}
@@ -128,7 +132,7 @@ const CartPage = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="col-md-5 text-center">
+                    <div className="col-md-5 text-center cart-summary">
                         <h2>Cart Summary</h2>
                         <p>Total | Checkout | Payment</p>
                         <hr />
@@ -160,7 +164,7 @@ const CartPage = () => {
                         )}
 
                         <div className="mt-2">
-                            {!clientToken || !auth?.token || !cart?.length ? (
+                            {/*  {!clientToken || !auth?.token || !cart?.length ? (
                                 ""
                             ) : (
                                 <>
@@ -182,7 +186,15 @@ const CartPage = () => {
                                         {loading ? "Processing ...." : "Make Payment"}
                                     </button>
                                 </>
-                            )}
+                            )} */}
+
+                            <button
+                                className="btn btn-primary"
+                                onClick={handlePayment}
+                                disabled={!auth?.user?.address}
+                            >
+                                {loading ? "Processing ...." : "Make Payment"}
+                            </button>
                         </div>
                     </div>
                 </div>

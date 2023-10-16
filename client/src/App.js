@@ -12,6 +12,7 @@ import PrivateRoute from "./components/Routes/Private";
 import AdminRoute from './components/Routes/AdminRoute';
 import ForgotPassword from './pages/Auth/ForgotPassword';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import AdminOrders from './pages/Admin/AdminOrders';
 import CreateCategory from './pages/Admin/CreateCategory';
 import CreateProduct from './pages/Admin/CreateProduct';
 import UpdateProduct from './pages/Admin/UpdateProduct';
@@ -48,6 +49,7 @@ const App = () => {
           <Route path='admin/create-product' element={<CreateProduct />} />
           <Route path='admin/product/:slug' element={<UpdateProduct />} />
           <Route path='admin/products' element={<Products />} />
+          <Route path='admin/orders' element={<AdminOrders />} />
           <Route path='admin/users' element={<Users />} />
         </Route>
         <Route path='/register' element={<Register />} />
