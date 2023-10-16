@@ -26,35 +26,36 @@
 - [x] 管理者更新訂單處理狀態
 
 ## api 列表
-/register
-/login
-/forgot-password
-/user-auth
-/admin-auth
-/profile
-/users
-/orders
-/all-orders
-/order-status/:orderId
-/order-status/:orderId
-/create-category
-/update-category/:id
-/get-category
-/single-category/:slug
-/delete-category/:id
-/create-product
-/get-product
-/get-product/:slug
-/product-photo/:pid
-/delete-product/:pid
-/update-product/:pid
-/product-filters
-/product-count
-/product-list/:page
-/search/:keyword
-/related-product/:pid/:cid
-/product-category/:slug
-/braintree/payment
+## api 列表
+* /register
+* /login
+* /forgot-password
+* /user-auth
+* /admin-auth
+* /profile
+* /users
+* /orders
+* /all-orders
+* /order-status/:orderId
+* /order-status/:orderId
+* /create-category
+* /update-category/:id
+* /get-category
+* /single-category/:slug
+* /delete-category/:id
+* /create-product
+* /get-product
+* /get-product/:slug
+* /product-photo/:pid
+* /delete-product/:pid
+* /update-product/:pid
+* /product-filters
+* /product-count
+* /product-list/:page
+* /search/:keyword
+* /related-product/:pid/:cid
+* /product-category/:slug
+* /braintree/payment
 
 
 ### 取得專案
