@@ -26,7 +26,6 @@
 - [x] 管理者更新訂單處理狀態
 
 ## api 列表
-## api 列表
 * /register
 * /login
 * /forgot-password
