@@ -117,12 +117,12 @@ http://localhost:8080/
 - Node.js v17.8.0
 - bcrypt v5.1.1
 - jsonwebtoken v9.0.2
-- slugify 1.6.6
-- concurrently 8.2.1
-- express-formidable 1.2.0
+- slugify v1.6.6
+- concurrently v8.2.1
+- express-formidable v1.2.0
 - cors v2.8.5
 - dotenv: v16.3.1
-- morgan: .1.10.0
+- morgan: v1.10.0
 - ...
 
 ## 參考來源
