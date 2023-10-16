@@ -1,4 +1,5 @@
 ## 功能
+
 - [x] 登入
 - [x] 登出
 - [x] 註冊
@@ -11,7 +12,7 @@
 - [x] 使用者瀏覽商品詳細內容，下方列出相似商品
 - [x] 使用者查詢商品
 - [x] 首頁預設 6 項商品，使用者可藉由 load more 功能分次瀏覽更多商品
-- [x] 使用者下町單
+- [x] 購物車
 - [x] 使用者訂單查詢
 - [x] 管理者建立商品類別
 - [x] 管理者更新商品類別
@@ -24,14 +25,37 @@
 - [x] 管理者瀏覽所有訂單
 - [x] 管理者更新訂單處理狀態
 
+## api 列表
+/register
+/login
+/forgot-password
+/user-auth
+/admin-auth
+/profile
+/users
+/orders
+/all-orders
+/order-status/:orderId
+/order-status/:orderId
+/create-category
+/update-category/:id
+/get-category
+/single-category/:slug
+/delete-category/:id
+/create-product
+/get-product
+/get-product/:slug
+/product-photo/:pid
+/delete-product/:pid
+/update-product/:pid
+/product-filters
+/product-count
+/product-list/:page
+/search/:keyword
+/related-product/:pid/:cid
+/product-category/:slug
+/braintree/payment
 
-## 畫面
-
-> 可提供 1~3 張圖片，讓觀看者透過 README 了解整體畫面
-
-![範例圖片 1](https://fakeimg.pl/500/)
-![範例圖片 2](https://fakeimg.pl/500/)
-![範例圖片 3](https://fakeimg.pl/500/)
 
 ### 取得專案
 
@@ -102,4 +126,49 @@ http://localhost:8080/
 - ...
 
 ## 參考來源
-- [Youtube 學習資源](https://www.youtube.com/watch?v=A_-fn_ij59c)
+- [Youtube 學習資源 - Techinfo YT](https://www.youtube.com/watch?v=A_-fn_ij59c)
+
+
+## 畫面
+- 登入
+![](https://hackmd.io/_uploads/S1PEFOcWp.jpg)
+
+- 註冊
+![](https://hackmd.io/_uploads/BkVUFuqbp.jpg)
+
+- 使用者檔案瀏覽
+![](https://hackmd.io/_uploads/ry_dY_qZ6.jpg)
+
+- 商品列表
+![](https://hackmd.io/_uploads/HkZ5YuqWT.jpg)
+
+- 使用者瀏覽單一類別商品
+![](https://hackmd.io/_uploads/Hy4hKOcZp.jpg)
+
+- 使用者瀏覽某價格區間商品
+![](https://hackmd.io/_uploads/SyBaYu9-6.jpg)
+
+- 使用者查詢商品
+![](https://hackmd.io/_uploads/rJZD5d9Z6.jpg)
+
+- 購物車
+![](https://hackmd.io/_uploads/B1nD5uqZp.jpg)
+
+- 使用者訂單查詢
+![](https://hackmd.io/_uploads/H19dqd9-p.jpg)
+
+![](https://hackmd.io/_uploads/HJ8Ycdc-a.jpg)
+
+- 管理者建立商品類別
+![](https://hackmd.io/_uploads/H1Ij9OqWa.jpg)
+
+- 管理者建立商品
+![](https://hackmd.io/_uploads/BJzA9uqZa.jpg)
+
+- 管理者更新訂單處理狀態
+Not Prcess => deliverd
+![](https://hackmd.io/_uploads/SJk6iucbT.jpg)
+
+![](https://hackmd.io/_uploads/BySFs_qZT.jpg)
+
+![](https://hackmd.io/_uploads/r16Kj_qZ6.jpg)
