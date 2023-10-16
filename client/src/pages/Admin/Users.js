@@ -17,7 +17,7 @@ const Users = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong in getting users");
+            /* toast.error("Something went wrong in getting users"); */
         }
     };
 

@@ -29,7 +29,8 @@ const HomePage = () => {
             setProducts(data.products);
         } catch (error) {
             setLoading(false);
-            toast.error("Something went wrong in getting products");
+            console.log(error);
+            /* toast.error("Something went wrong in getting products"); */
         }
     }
 
@@ -50,8 +51,8 @@ const HomePage = () => {
             const { data } = await axios.get(`/api/v1/product/product-count`);
             setTotal(data?.total);
         } catch (error) {
-            /* console.log(error); */
-            toast.error("Something went wrong in getting total")
+            console.log(error);
+            /*  toast.error("Something went wrong in getting total") */
         }
     };
 
@@ -83,7 +84,7 @@ const HomePage = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong in getting category");
+            /* toast.error("Something went wrong in getting category"); */
         }
     };
 

@@ -24,7 +24,8 @@ const ProductDetails = () => {
             /* setProduct(data?.product._id, data?.product.category._id); */
             getSimilarProduct(data?.product._id, data?.product.category._id);
         } catch (error) {
-            toast.error("Something went wrong in getting product");
+            console.log(error);
+            /* toast.error("Something went wrong in getting product"); */
         }
     }
 
@@ -33,7 +34,8 @@ const ProductDetails = () => {
             const { data } = await axios.get(`/api/v1/product/related-product/${pid}/${cid}`);
             setRelatedProducts(data?.products);
         } catch (error) {
-            toast.error("Something went wrong in getting related-product");
+            console.log(error);
+            /* toast.error("Something went wrong in getting related-product"); */
         }
     }
 

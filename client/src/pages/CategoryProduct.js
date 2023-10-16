@@ -22,7 +22,8 @@ const CategoryProduct = () => {
             setProducts(data?.products);
             setCategory(data?.category);
         } catch (error) {
-            toast.error("Something went wrong in getting category product")
+            console.log(error);
+            /* toast.error("Something went wrong in getting category product") */
         }
     }
 

@@ -46,7 +46,8 @@ const Profile = () => {
                 navigate("/dashboard/user");
             }
         } catch (error) {
-            toast.error("Error while update profile");
+            console.log(error);
+            /* toast.error("Error while update profile"); */
         }
     }
 

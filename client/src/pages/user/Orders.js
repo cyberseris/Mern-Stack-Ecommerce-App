@@ -11,10 +11,14 @@ const Orders = () => {
     const [auth, setAuth] = useAuth();
 
     const getOrders = async () => {
+        console.log("testorder")
         try {
             const { data } = await axios.get("/api/v1/auth/orders");
+            console.log(data)
             setOrders(data);
+
         } catch (error) {
+            console.log("data error")
             console.log(error)
         }
     }
@@ -52,7 +56,7 @@ const Orders = () => {
                                                 <td>{o?.status}</td>
                                                 <td>{o?.buyer?.name}</td>
                                                 <td>{moment(o?.createAt).fromNow()}</td>
-                                                <td>{o?.payment.success ? "Success" : "Failed"}</td>
+                                                <td>{o?.payment ? "Success" : "Failed"}</td>
                                                 <td>{o?.products?.length}</td>
                                             </tr>
                                         </tbody>

@@ -49,7 +49,8 @@ const UpdateProduct = () => {
                 setCategories(data?.category);
             }
         } catch (error) {
-            toast.error("Something went wrong in getting category");
+            console.log(error);
+            /*  toast.error("Something went wrong in getting category"); */
         }
     };
 

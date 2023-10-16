@@ -10,13 +10,6 @@ import toast from "react-hot-toast";
 
 dotenv.config();
 
-//payment gateway
-var gateway = new braintree.BraintreeGateway({
-    environment: braintree.Environment.Sandbox,
-    merchantId: process.env.BRAINTREE_MERCHANT_ID,
-    publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-    privateKey: process.env.BRAINTREE_PRIVATE_KEY,
-});
 
 //1.server.js => 2. productRoutes 3. productController.js(API) => 4. authMiddleware.js(requireSignIn, isAdmin,) => App.js(前端)
 //create product
@@ -324,59 +317,9 @@ export const productCategoryController = async (req, res) => {
     }
 }
 
-export const brainTreeTokenController = async (req, res) => {
-    try {
 
-        gateway.clientToken.generate({}, function (err, response) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.send(response);
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-//payment
-/* export const brainTreePaymentController = async (req, res) => {
+export const paymentController = async (req, res) => {
     try {
-        const { nonce, cart } = req.body;
-        let total = 0;
-        cart.map((i) => {
-            total += i.price;
-        });
-        let newTransaction = gateway.transaction.sale(
-            {
-                amount: total,
-                paymentMethodNonce: nonce,
-                options: {
-                    submitForSettlement: true,
-                },
-            },
-            function (error, result) {
-                if (result) {
-                    const order = new orderModel({
-                        products: cart,
-                        payment: result,
-                        buyer: req.user._id,
-                    }).save();
-                    res.json({ ok: true });
-                } else {
-                    res.status(500).send(error);
-                }
-            }
-        );
-    } catch (error) {
-        console.log(error);
-    }
-};
- */
-
-export const brainTreePaymentController = async (req, res) => {
-    try {
-        /* const { nonce, cart } = req.body; */
         const { cart } = req.body;
         let total = 0;
         cart.map((i) => {
@@ -385,7 +328,7 @@ export const brainTreePaymentController = async (req, res) => {
 
         const order = new orderModel({
             products: cart,
-            payment: "true",
+            payment: true,
             buyer: req.user._id,
         }).save();
         res.json({ ok: true });

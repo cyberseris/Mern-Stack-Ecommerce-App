@@ -31,7 +31,8 @@ const CartPage = () => {
                 currency: "USD",
             });
         } catch (error) {
-            toast.error("Something went wrong in getting total price")
+            console.log(error);
+            /* toast.error("Something went wrong in getting total price") */
         }
     }
 
@@ -45,26 +46,11 @@ const CartPage = () => {
             localStorage.setItem("cart", JSON.stringify(myCart));
             toast.success("Product deleted successfully");
         } catch (error) {
-            toast.error("Something went wrong in getting removeCartItem");
+            console.log(error);
+            /* toast.error("Something went wrong in getting removeCartItem"); */
         }
     }
 
-    //get payment gateway token
-    const getToken = async () => {
-        try {
-            const { data } = await axios.post("/api/v1/product/braintree/token");
-            console.log("braintree token")
-            /*  console.log(data) */
-            setClientToken(data?.clientToken);
-        } catch (error) {
-            /*  console.log(error); */
-            console.log("braintree gettoken")
-        }
-    };
-
-    useEffect(() => {
-        getToken();
-    }, [auth?.token])
 
     //handle Payment 
     const handlePayment = async () => {
@@ -75,10 +61,10 @@ const CartPage = () => {
                 nonce, cart
             });
  */
+
             const { data } = await axios.post("/api/v1/product/braintree/payment", {
                 cart
             });
-
             setLoading(false);
             localStorage.removeItem("cart");
             setCart([]);
