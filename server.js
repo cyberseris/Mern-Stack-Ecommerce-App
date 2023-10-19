@@ -29,6 +29,14 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/category', categoryRoutes);
 app.use('/api/v1/product', productRoutes);
 
+app.use(cors(
+    {
+        origin: ["https://mern-stack-ecommerce-app-rho.vercel.app/"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+));
+
 //rest api
 app.get('/', (req, res) => {
     res.send("<h1>Welcome to ecommerce app MERN STACK Project</h1>")
