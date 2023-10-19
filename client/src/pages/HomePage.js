@@ -200,7 +200,7 @@ const HomePage = () => {
                     <div className="m-2 p-3">
                         {products && products.length < total && (
                             <button
-                                className="btn btn-success text-white loadmore"
+                                className="btn btn-success text-white loadmore d-flex align-items-center justify-content-center w-25"
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setPage(page + 1);
@@ -211,7 +211,9 @@ const HomePage = () => {
                                 ) : (
                                     <>
                                         {" "}
-                                        Loadmore <AiOutlineReload />
+                                        <span> Loadmore</span> <span class="material-symbols-outlined">
+                                            refresh
+                                        </span>
                                     </>
                                 )}
                             </button>
