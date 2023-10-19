@@ -31,7 +31,7 @@ app.use('/api/v1/product', productRoutes);
 
 app.use(cors(
     {
-        origin: ["https://mern-stack-ecommerce-app-rho.vercel.app/"],
+        origin: ["https://mern-stack-ecommerce-app-vercel-q6t2pdkzz-seriskeys-projects.vercel.app/"],
         methods: ["POST", "GET"],
         credentials: true
     }
