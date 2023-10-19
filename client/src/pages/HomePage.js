@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import Layout from "./../components/layout/Layout";
 import { Checkbox, Radio } from 'antd';
 import { Prices } from "../components/Prices";
-import { AiOutlineReload } from "react-icons/ai";
 import { useCart } from "../context/cart";
 import "../styles/Homepage.css";
 
