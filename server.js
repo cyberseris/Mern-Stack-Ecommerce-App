@@ -29,13 +29,19 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/category', categoryRoutes);
 app.use('/api/v1/product', productRoutes);
 
-app.use(cors(
+/* app.use(cors(
     {
         origin: ["https://mern-stack-ecommerce-app-vercel-q6t2pdkzz-seriskeys-projects.vercel.app/"],
         methods: ["POST", "GET"],
         credentials: true
     }
-));
+)); */
+
+app.get('/test', (req, res) => {
+    res.json({
+        message: "test work!!",
+    });
+});
 
 //rest api
 app.get('/', (req, res) => {
